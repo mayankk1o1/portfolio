@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: #94a3b8;
+  overflow-x: hidden;
+}
+
+body.light {
+  background: #f8fafc;
+  color: #475569;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+body.light ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+
+::selection { background: #3b82f620; color: #60a5fa; }
+
+/* Fade in on scroll */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-up.in { opacity: 1; transform: none; }
+
+/* Nav link underline */
+.nav-item {
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: #60a5fa;
+  transition: width 0.25s ease;
+}
+.nav-item:hover::after,
+.nav-item.active::after { width: 100%; }
+
+/* Cards */
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.card:hover {
+  border-color: #60a5fa50;
+  box-shadow: 0 4px 24px #00000030;
+  transform: translateY(-2px);
+}
+body.light .card {
+  background: #fff;
+  border-color: #e2e8f0;
+}
+body.light .card:hover {
+  border-color: #3b82f640;
+  box-shadow: 0 4px 20px #0000000d;
+}
+
+/* Skill tag */
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #1e3a5f20;
+  border: 1px solid #3b82f620;
+  color: #7dd3fc;
+  transition: background 0.2s;
+}
+.tag:hover { background: #3b82f615; }
+body.light .tag { background: #eff6ff; border-color: #bfdbfe; color: #2563eb; }
+
+/* Section heading accent */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #60a5fa;
+  letter-spacing: 0.08em;
+}
+
+/* Timeline */
+.tl-line {
+  position: absolute;
+  left: 7px; top: 20px; bottom: 0;
+  width: 1px;
+  background: #334155;
+}
+.tl-dot {
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid #334155;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: border-color 0.2s;
+}
+.tl-item:hover .tl-dot { border-color: #60a5fa; }
+body.light .tl-dot { background: #f8fafc; }
+
+/* Input */
+.field {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.field:focus { border-color: #60a5fa; }
+.field::placeholder { color: #475569; }
+body.light .field { background: #fff; border-color: #e2e8f0; color: #1e293b; }
+body.light .field::placeholder { color: #94a3b8; }
+body.light .field:focus { border-color: #60a5fa; }
+
+/* Cert card */
+.cert {
+  border-radius: 10px;
+  padding: 20px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  transition: border-color 0.25s;
+}
+.cert:hover { border-color: #60a5fa50; }
+body.light .cert { background: #fff; border-color: #e2e8f0; }
+
+/* Primary button */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+
+/* Outline button */
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.btn-outline:hover { color: #e2e8f0; border-color: #60a5fa50; transform: translateY(-1px); }
+body.light .btn-outline { color: #475569; border-color: #e2e8f0; }
+body.light .btn-outline:hover { color: #1e293b; border-color: #93c5fd; }
+
+/* Available badge */
+.available {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #0520160f;
+  border: 1px solid #22c55e40;
+  color: #4ade80;
+}
+body.light .available { background: #f0fdf4; border-color: #86efac; color: #16a34a; }
